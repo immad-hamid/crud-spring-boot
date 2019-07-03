@@ -1,4 +1,4 @@
-package com.mysqlconnection.connectmysql.app;
+package com.mysqlconnection.connectmysql.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

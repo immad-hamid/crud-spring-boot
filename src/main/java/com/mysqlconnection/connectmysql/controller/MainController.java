@@ -1,6 +1,8 @@
-package com.mysqlconnection.connectmysql.app;
+package com.mysqlconnection.connectmysql.controller;
 
 import com.mysqlconnection.connectmysql.ConnectMysqlApplication;
+import com.mysqlconnection.connectmysql.entity.User;
+import com.mysqlconnection.connectmysql.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -43,8 +45,7 @@ public class MainController  {
 
     @GetMapping(path="/users/{id}") // Map ONLY GET Requests
     public @ResponseBody User getUser(@PathVariable Integer id) {
-        User n = new User();
-        n = userRepository.findById(id).get();
+        User n = userRepository.findById(id).get();
         LOG.log(Level.INFO, "GET: Getting user with id " + id);
         logResults("GET: Getting user with id " + id);
         return n;

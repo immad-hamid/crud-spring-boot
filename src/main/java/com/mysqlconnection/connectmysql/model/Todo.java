@@ -1,4 +1,4 @@
-package com.mysqlconnection.connectmysql.hello;
+package com.mysqlconnection.connectmysql.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
