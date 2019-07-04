@@ -64,7 +64,7 @@ public class MainController  {
 
     @PutMapping(path="/users/{id}") // Map ONLY GET Requests
     public @ResponseBody User updateUser(@RequestBody User dto, @PathVariable Integer id) {
-        User n = new User();
+        User n;
         n = userRepository.findById(id).get();
         n.setName(dto.getName());
         n.setEmail(dto.getEmail());
@@ -76,7 +76,7 @@ public class MainController  {
 
     @DeleteMapping(path="/users/{id}") // Map ONLY GET Requests
     public @ResponseBody User deleteUser(@PathVariable Integer id) {
-        User n = new User();
+        User n;
         n = userRepository.findById(id).get();
         userRepository.delete(n);
         LOG.log(Level.INFO, "DELETE: Deleted user with id " + id);
