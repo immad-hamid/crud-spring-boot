@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileWriter;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -34,6 +35,7 @@ public class LoggingServiceImpl implements LoggingService {
         }
 
         logger.info(stringBuilder.toString());
+        logResults(stringBuilder.toString());
     }
 
     @Override
@@ -47,6 +49,7 @@ public class LoggingServiceImpl implements LoggingService {
         stringBuilder.append("responseBody=[").append(body).append("] ");
 
         logger.info(stringBuilder.toString());
+        logResults(stringBuilder.toString());
     }
 
     private Map<String, String> buildParametersMap(HttpServletRequest httpServletRequest) {
@@ -84,5 +87,16 @@ public class LoggingServiceImpl implements LoggingService {
         }
 
         return map;
+    }
+
+    private void logResults(String text) {
+        try {
+            FileWriter fw = new FileWriter("D:\\logFile.txt", true);
+            fw.write(text + "\n");
+            fw.close();
+            System.out.println("Success...");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
